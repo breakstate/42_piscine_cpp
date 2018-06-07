@@ -13,11 +13,7 @@ public:
 	ScavTrap( const ScavTrap & srcObj );
 	~ScavTrap( void );
 	ScavTrap & operator=( ScavTrap const & rhs );
-	void	rangedAttack( std::string const & target );
-	void	meleeAttack( std::string const & target );
-	void	takeDamage( unsigned int amount );
-	void	beRepaired( unsigned int amount );
-	void	getValues( void );
+	
 	void	challengeNewcomer( std::string const & target );
 };
 #endif

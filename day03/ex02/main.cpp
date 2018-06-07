@@ -7,6 +7,8 @@
 int		main()
 {
 	FragTrap newFrag = FragTrap("Tim");
+	ScavTrap newScav = ScavTrap("Joe");
+	
 	newFrag.getValues();
 	newFrag.takeDamage( 50 );
 	newFrag.getValues();
@@ -18,5 +20,18 @@ int		main()
 	newFrag.vaulthunter_dot_exe( "test" );
 	newFrag.vaulthunter_dot_exe( "test" );
 	newFrag.getValues();
+
+	newScav.getValues();
+	newScav.takeDamage( 50 );
+	newScav.getValues();
+	newScav.beRepaired( 75 );
+	newScav.getValues();
+	newScav.challengeNewcomer( "test" );
+	newScav.challengeNewcomer( "test" );
+	newScav.challengeNewcomer( "test" );
+	newScav.challengeNewcomer( "test" );
+	newScav.challengeNewcomer( "test" );
+	newScav.getValues();
+
 	return (0);
 }

@@ -5,6 +5,7 @@
 
 FragTrap::FragTrap( void ) {
 	std::cout << "Default constructor called FragTrap" << std::endl;
+	this->type = "FR4G-TP";
 	this->hitPts = 100;
 	this->maxHitPts = 100;
 	this->energyPts = 100;
@@ -18,6 +19,7 @@ FragTrap::FragTrap( void ) {
 
 FragTrap::FragTrap( std::string name ) {
 	std::cout << "Default constructor called FragTrap" << std::endl;
+	this->type = "FR4G-TP";	
 	this->hitPts = 100;
 	this->maxHitPts = 100;
 	this->energyPts = 100;
@@ -40,6 +42,7 @@ FragTrap::~FragTrap( void ) {
 
 FragTrap & FragTrap::operator=( FragTrap const & rhs ) {
 	std::cout << "Assignment operator called FragTrap" << std::endl;
+	this->type = "FR4G-TP";	
 	this->hitPts = rhs.hitPts;
 	this->maxHitPts = rhs.maxHitPts;
 	this->energyPts = rhs.energyPts;
@@ -50,49 +53,6 @@ FragTrap & FragTrap::operator=( FragTrap const & rhs ) {
 	this->rangedAttackDamage = rhs.rangedAttackDamage;
 	this->armourDamageReduction = rhs.armourDamageReduction;
 	return (*this);
-}
-
-void	FragTrap::rangedAttack(std::string const & target) {
-	std::cout << "FR4G-TP" << this->name << " attacks " << target << " at range, causing " << this->rangedAttackDamage << " points of damage!" << std::endl;
-}
-void	FragTrap::meleeAttack(std::string const & target) {
-	std::cout << "FR4G-TP" << this->name << " melee attacks " << target << ", causing " << this->meleeAttackDamage << " points of damage!" << std::endl;
-}
-void	FragTrap::takeDamage(unsigned int amount) {
-	if (amount > this->armourDamageReduction)
-		amount = amount - this->armourDamageReduction;
-	else
-		amount = 0;
-	if (amount > this->hitPts)
-	{
-		std::cout << "FR4G-TP " << this->name << " hit for (-" << amount << "). I think it's dead..." << std::endl;
-		this->hitPts = 0;
-	}
-	else
-	{
-		std::cout << "FR4G-TP " << this->name << " takes " << amount << " points of damage" << std::endl;
-		this->hitPts = this->hitPts - amount;
-	}
-}
-void	FragTrap::beRepaired(unsigned int amount) {
-	if (amount > (this->maxHitPts - this->hitPts) && this->hitPts < this->maxHitPts) {
-		std::cout << "FR4G-TP " << this->name << " is fully healed (+" << amount << "), with " << this->maxHitPts - amount << " to spare" << std::endl;
-		this->hitPts = this->maxHitPts;
-	}
-	else if (this->hitPts == this->maxHitPts) {
-		std::cout << "FR4G-TP " << this->name << " is at max health!" << std::endl;
-	}
-	else {
-		std::cout << "FR4G-TP " << this->name << " is healed for " << amount << "!" << std::endl;
-		this->hitPts = this->hitPts + amount;
-	}
-}
-void	FragTrap::getValues( void ) {
-	std::cout << std::endl;
-	std::cout << "FR4G-TP: " << this->name << std::endl;
-	std::cout << "Hit points: " << this->hitPts << std::endl; //hit points
-	std::cout << "Energy points: " << this->energyPts << std::endl; //energy points
-	std::cout << std::endl;	
 }
 
 void	FragTrap::vaulthunter_dot_exe( std::string const & target ) {
@@ -108,10 +68,10 @@ void	FragTrap::vaulthunter_dot_exe( std::string const & target ) {
 		index = rand() % 5;
 
 		this->energyPts = this->energyPts - 25;
-		std::cout << "FR4G-TP " << this->name << " atacks " << target << " with " << attacks[index] << std::endl;
+		std::cout << this->type << " " << this->name << " atacks " << target << " with " << attacks[index] << std::endl;
 	}
 	else {
-		std::cout << "FR4G-TP " << this->name << " doesn't have enough energy to attack!" << std::endl;
+		std::cout << this->type << " " << this->name << " doesn't have enough energy to attack!" << std::endl;
 	}
 }
 

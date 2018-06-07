@@ -18,8 +18,10 @@ public:
 	void	takeDamage( unsigned int amount );
 	void	beRepaired( unsigned int amount );
 	void	getValues( void );
-	void	vaulthunter_dot_exe( std::string const & target );
+	//void	vaulthunter_dot_exe( std::string const & target );
 
+protected:
+	std::string	type;
 	int		hitPts;
 	int		maxHitPts;
 	int		energyPts;

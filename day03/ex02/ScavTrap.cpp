@@ -5,6 +5,7 @@
 
 ScavTrap::ScavTrap( void ) {
 	std::cout << "Default constructor called ScavTrap" << std::endl;
+	this->type = "SC4V-TP";
 	this->hitPts = 100;
 	this->maxHitPts = 100;
 	this->energyPts = 50;
@@ -18,6 +19,7 @@ ScavTrap::ScavTrap( void ) {
 
 ScavTrap::ScavTrap( std::string name ) {
 	std::cout << "Default constructor called ScavTrap" << std::endl;
+	this->type = "SC4V-TP";	
 	this->hitPts = 100;
 	this->maxHitPts = 100;
 	this->energyPts = 50;
@@ -40,6 +42,7 @@ ScavTrap::~ScavTrap( void ) {
 
 ScavTrap & ScavTrap::operator=( ScavTrap const & rhs ) {
 	std::cout << "Assignment operator called ScavTrap" << std::endl;
+	this->type = "SC4V-TP";	
 	this->hitPts = rhs.hitPts;
 	this->maxHitPts = rhs.maxHitPts;
 	this->energyPts = rhs.energyPts;
@@ -50,49 +53,6 @@ ScavTrap & ScavTrap::operator=( ScavTrap const & rhs ) {
 	this->rangedAttackDamage = rhs.rangedAttackDamage;
 	this->armourDamageReduction = rhs.armourDamageReduction;
 	return (*this);
-}
-
-void	ScavTrap::rangedAttack(std::string const & target) {
-	std::cout << "SC4V-TP" << this->name << " attacks " << target << " at range, causing " << this->rangedAttackDamage << " points of damage!" << std::endl;
-}
-void	ScavTrap::meleeAttack(std::string const & target) {
-	std::cout << "SC4V-TP" << this->name << " melee attacks " << target << ", causing " << this->meleeAttackDamage << " points of damage!" << std::endl;
-}
-void	ScavTrap::takeDamage(unsigned int amount) {
-	if (amount > this->armourDamageReduction)
-		amount = amount - this->armourDamageReduction;
-	else
-		amount = 0;
-	if (amount > this->hitPts)
-	{
-		std::cout << "SC4V-TP " << this->name << " hit for (-" << amount << "). I think it's dead..." << std::endl;
-		this->hitPts = 0;
-	}
-	else
-	{
-		std::cout << "SC4V-TP " << this->name << " takes " << amount << " points of damage" << std::endl;
-		this->hitPts = this->hitPts - amount;
-	}
-}
-void	ScavTrap::beRepaired(unsigned int amount) {
-	if (amount > (this->maxHitPts - this->hitPts) && this->hitPts < this->maxHitPts) {
-		std::cout << "SC4V-TP " << this->name << " is fully healed (+" << amount << "), with " << this->maxHitPts - amount << " to spare" << std::endl;
-		this->hitPts = this->maxHitPts;
-	}
-	else if (this->hitPts == this->maxHitPts) {
-		std::cout << "SC4V-TP " << this->name << " is at max health!" << std::endl;
-	}
-	else {
-		std::cout << "SC4V-TP " << this->name << " is healed for " << amount << "!" << std::endl;
-		this->hitPts = this->hitPts + amount;
-	}
-}
-void	ScavTrap::getValues( void ) {
-	std::cout << std::endl;
-	std::cout << "SC4V-TP: " << this->name << std::endl;
-	std::cout << "Hit points: " << this->hitPts << std::endl;
-	std::cout << "Energy points: " << this->energyPts << std::endl;
-	std::cout << std::endl;	
 }
 
 void	ScavTrap::challengeNewcomer( std::string const & target ) {
@@ -108,10 +68,10 @@ void	ScavTrap::challengeNewcomer( std::string const & target ) {
 		index = rand() % 5;
 
 		this->energyPts = this->energyPts - 25;
-		std::cout << "SC4V-TP " << this->name << " challenges " << target << " to a " << challenge[index] << std::endl;
+		std::cout << this->type << " " << this->name << " challenges " << target << " to a " << challenge[index] << std::endl;
 	}
 	else {
-		std::cout << "SC4V-TP " << this->name << " doesn't have enough energy to challenge!" << std::endl;
+		std::cout << this->type << " " << this->name << " doesn't have enough energy to challenge!" << std::endl;
 	}
 }
 

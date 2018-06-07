@@ -5,6 +5,7 @@
 
 ClapTrap::ClapTrap( void ) {
 	std::cout << "Default constructor called ClapTrap" << std::endl;
+	this->type = "CL4P-TP";
 	this->hitPts = 100;
 	this->maxHitPts = 100;
 	this->energyPts = 100;
@@ -18,6 +19,7 @@ ClapTrap::ClapTrap( void ) {
 
 ClapTrap::ClapTrap( std::string name ) {
 	std::cout << "Default constructor called ClapTrap" << std::endl;
+	this->type = "CL4P-TP";	
 	this->hitPts = 100;
 	this->maxHitPts = 100;
 	this->energyPts = 100;
@@ -40,6 +42,7 @@ ClapTrap::~ClapTrap( void ) {
 
 ClapTrap & ClapTrap::operator=( ClapTrap const & rhs ) {
 	std::cout << "Assignment operator called ClapTrap" << std::endl;
+	this->type = "CL4P-TP";	
 	this->hitPts = rhs.hitPts;
 	this->maxHitPts = rhs.maxHitPts;
 	this->energyPts = rhs.energyPts;
@@ -53,10 +56,10 @@ ClapTrap & ClapTrap::operator=( ClapTrap const & rhs ) {
 }
 
 void	ClapTrap::rangedAttack(std::string const & target) {
-	std::cout << "CL4P-TP" << this->name << " attacks " << target << " at range, causing " << this->rangedAttackDamage << " points of damage!" << std::endl;
+	std::cout << this->type << this->name << " attacks " << target << " at range, causing " << this->rangedAttackDamage << " points of damage!" << std::endl;
 }
 void	ClapTrap::meleeAttack(std::string const & target) {
-	std::cout << "CL4P-TP" << this->name << " melee attacks " << target << ", causing " << this->meleeAttackDamage << " points of damage!" << std::endl;
+	std::cout << this->type << this->name << " melee attacks " << target << ", causing " << this->meleeAttackDamage << " points of damage!" << std::endl;
 }
 void	ClapTrap::takeDamage(unsigned int amount) {
 	if (amount > this->armourDamageReduction)
@@ -65,36 +68,36 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 		amount = 0;
 	if (amount > this->hitPts)
 	{
-		std::cout << "CL4P-TP " << this->name << " hit for (-" << amount << "). I think it's dead..." << std::endl;
+		std::cout << this->type << " " << this->name << " hit for (-" << amount << "). I think it's dead..." << std::endl;
 		this->hitPts = 0;
 	}
 	else
 	{
-		std::cout << "CL4P-TP " << this->name << " takes " << amount << " points of damage" << std::endl;
+		std::cout << this->type << " " << this->name << " takes " << amount << " points of damage" << std::endl;
 		this->hitPts = this->hitPts - amount;
 	}
 }
 void	ClapTrap::beRepaired(unsigned int amount) {
 	if (amount > (this->maxHitPts - this->hitPts) && this->hitPts < this->maxHitPts) {
-		std::cout << "CL4P-TP " << this->name << " is fully healed (+" << amount << "), with " << this->maxHitPts - amount << " to spare" << std::endl;
+		std::cout << this->type << " " << this->name << " is fully healed (+" << amount << "), with " << this->maxHitPts - amount << " to spare" << std::endl;
 		this->hitPts = this->maxHitPts;
 	}
 	else if (this->hitPts == this->maxHitPts) {
-		std::cout << "CL4P-TP " << this->name << " is at max health!" << std::endl;
+		std::cout << this->type << " " << this->name << " is at max health!" << std::endl;
 	}
 	else {
-		std::cout << "CL4P-TP " << this->name << " is healed for " << amount << "!" << std::endl;
+		std::cout << this->type << " " << this->name << " is healed for " << amount << "!" << std::endl;
 		this->hitPts = this->hitPts + amount;
 	}
 }
 void	ClapTrap::getValues( void ) {
 	std::cout << std::endl;
-	std::cout << "CL4P-TP: " << this->name << std::endl;
+	std::cout << this->type << ": " << this->name << std::endl;
 	std::cout << "Hit points: " << this->hitPts << std::endl;
 	std::cout << "Energy points: " << this->energyPts << std::endl;
 	std::cout << std::endl;	
 }
-
+/*
 void	ClapTrap::vaulthunter_dot_exe( std::string const & target ) {
 	if (this->energyPts > 0) {
 		int	index;
@@ -114,4 +117,4 @@ void	ClapTrap::vaulthunter_dot_exe( std::string const & target ) {
 		std::cout << "CL4P-TP " << this->name << " doesn't have enough energy to attack!" << std::endl;
 	}
 }
-
+*/
