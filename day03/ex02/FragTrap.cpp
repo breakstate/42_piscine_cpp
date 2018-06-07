@@ -1,6 +1,7 @@
 #include "FragTrap.hpp"
 #include <string>
 #include <iostream>
+#include <cstdlib>
 
 FragTrap::FragTrap( void ) {
 	std::cout << "Default constructor called FragTrap" << std::endl;

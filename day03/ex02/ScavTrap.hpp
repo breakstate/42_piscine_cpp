@@ -3,6 +3,7 @@
 
 # include "ClapTrap.hpp"
 # include <string>
+# include <cstdlib>
 
 class ScavTrap: public ClapTrap {
 

@@ -1,6 +1,9 @@
 #ifndef ClapTrap_H
 # define ClapTrap_H
+
 # include <string>
+# include <cstdlib>
+
 
 class ClapTrap {
 

@@ -1,6 +1,7 @@
 #include "ClapTrap.hpp"
 #include <string>
 #include <iostream>
+#include <cstdlib>
 
 ClapTrap::ClapTrap( void ) {
 	std::cout << "Default constructor called ClapTrap" << std::endl;

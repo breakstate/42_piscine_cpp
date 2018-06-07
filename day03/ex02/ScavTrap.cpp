@@ -1,6 +1,7 @@
 #include "ScavTrap.hpp"
 #include <string>
 #include <iostream>
+#include <cstdlib>
 
 ScavTrap::ScavTrap( void ) {
 	std::cout << "Default constructor called ScavTrap" << std::endl;
