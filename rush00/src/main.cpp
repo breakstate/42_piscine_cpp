@@ -1,9 +1,10 @@
 #include "Player.hpp"
 #include <ncurses.h>
+#include <unistd.h>
 
 int	main()
 {
-	Player player;
+	Player plr;
 
 	int	quit = 0;
 	int	scrX = 0;
@@ -22,21 +23,22 @@ int	main()
 	while (!quit){
 		clear();
 		box( stdscr, 0, 0);
-		mvprintw(player.y, player.x, ">");
+		mvprintw(plr.y, plr.x, ">");
 		refresh();
+		usleep(50000); // includes c library
 		ch = getch();
 		switch (ch) {
 			case KEY_LEFT:
-				player.x -= 4;
+				plr.x -= 4;
 				break;
 			case KEY_RIGHT:
-				player.x++;
+				plr.x++;
 				break;
 			case KEY_UP:
-				player.y--;
+				plr.y--;
 				break;
 			case KEY_DOWN:
-				player.y++;
+				plr.y++;
 				break;
 			case 'q':
 				quit = 1;

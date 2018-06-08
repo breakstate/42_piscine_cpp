@@ -8,11 +8,13 @@ Player::Player( void ) {
 }
 
 Player::Player( Player & srcObj ) {
-
+	// sort this out
 }
 
 Player & Player::operator=( Player & srcObj ) {
-
+	this->x = srcObj.x;
+	this->y = srcObj.y;
+	return (*this);
 }
 
 Player::~Player( void ) {

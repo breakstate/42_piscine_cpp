@@ -13,7 +13,15 @@ public:
 	Player( Player & srcObj ); // copy constructor
 	Player & operator=( Player & srcObj ); // assignation operator overload
 	~Player( void ); // destructor
-
+/*
+	getPlrX
+	getPlrY
+	plrLeft
+	plrRight
+	plrUp
+	plrDown
+	plrFire
+*/
 private:
 
 };
