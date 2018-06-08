@@ -16,9 +16,9 @@ public:
 	~NinjaTrap( void );
 	NinjaTrap & operator=( NinjaTrap const & rhs );
 
-	void	ninjaShoebox( ClapTrap const & srcObj );
-	void	ninjaShoebox( FragTrap const & srcObj );
-	void	ninjaShoebox( ScavTrap const & srcObj );
-	void	ninjaShoebox( NinjaTrap const & srcObj );
+	void	ninjaShoebox( ClapTrap & srcObj );
+	void	ninjaShoebox( FragTrap & srcObj );
+	void	ninjaShoebox( ScavTrap & srcObj );
+	void	ninjaShoebox( NinjaTrap & srcObj );
 };
 #endif

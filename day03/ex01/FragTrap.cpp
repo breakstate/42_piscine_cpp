@@ -58,13 +58,13 @@ void	FragTrap::meleeAttack(std::string const & target) {
 	std::cout << "FR4G-TP" << this->name << " melee attacks " << target << ", causing " << this->meleeAttackDamage << " points of damage!" << std::endl;
 }
 void	FragTrap::takeDamage(unsigned int amount) {
-	if (amount > this->armourDamageReduction)
+	if ((int)amount > this->armourDamageReduction)
 		amount = amount - this->armourDamageReduction;
 	else
 		amount = 0;
-	if (amount > this->hitPts)
+	if ((int)amount > this->hitPts)
 	{
-		std::cout << "FR4G-TP " << this->name << " hit for (-" << amount << "). I think it's dead..." << std::endl;
+		std::cout << "FR4G-TP " << this->name << " hit for (-" << amount << ")." << std::endl;
 		this->hitPts = 0;
 	}
 	else
@@ -72,9 +72,11 @@ void	FragTrap::takeDamage(unsigned int amount) {
 		std::cout << "FR4G-TP " << this->name << " takes " << amount << " points of damage" << std::endl;
 		this->hitPts = this->hitPts - amount;
 	}
+	if (this->hitPts == 0)
+		std::cout << "I think it's dead..." << std::endl;
 }
 void	FragTrap::beRepaired(unsigned int amount) {
-	if (amount > (this->maxHitPts - this->hitPts) && this->hitPts < this->maxHitPts) {
+	if ((int)amount > (this->maxHitPts - this->hitPts) && this->hitPts < this->maxHitPts) {
 		std::cout << "FR4G-TP " << this->name << " is fully healed (+" << amount << "), with " << this->maxHitPts - amount << " to spare" << std::endl;
 		this->hitPts = this->maxHitPts;
 	}
@@ -107,7 +109,7 @@ void	FragTrap::vaulthunter_dot_exe( std::string const & target ) {
 		index = rand() % 5;
 
 		this->energyPts = this->energyPts - 25;
-		std::cout << "FR4G-TP " << this->name << " atacks " << target << " with " << attacks[index] << std::endl;
+		std::cout << "FR4G-TP " << this->name << " attacks " << target << " with " << attacks[index] << std::endl;
 	}
 	else {
 		std::cout << "FR4G-TP " << this->name << " doesn't have enough energy to attack!" << std::endl;

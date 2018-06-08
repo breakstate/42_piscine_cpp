@@ -58,13 +58,13 @@ void	ScavTrap::meleeAttack(std::string const & target) {
 	std::cout << "SC4V-TP" << this->name << " melee attacks " << target << ", causing " << this->meleeAttackDamage << " points of damage!" << std::endl;
 }
 void	ScavTrap::takeDamage(unsigned int amount) {
-	if (amount > this->armourDamageReduction)
+	if ((int)amount > this->armourDamageReduction)
 		amount = amount - this->armourDamageReduction;
 	else
 		amount = 0;
-	if (amount > this->hitPts)
+	if ((int)amount > this->hitPts)
 	{
-		std::cout << "SC4V-TP " << this->name << " hit for (-" << amount << "). I think it's dead..." << std::endl;
+		std::cout << "SC4V-TP " << this->name << " hit for (-" << amount << ")." << std::endl;
 		this->hitPts = 0;
 	}
 	else
@@ -72,9 +72,11 @@ void	ScavTrap::takeDamage(unsigned int amount) {
 		std::cout << "SC4V-TP " << this->name << " takes " << amount << " points of damage" << std::endl;
 		this->hitPts = this->hitPts - amount;
 	}
+	if (this->hitPts == 0)
+		std::cout << "I think it's dead..." << std::endl;
 }
 void	ScavTrap::beRepaired(unsigned int amount) {
-	if (amount > (this->maxHitPts - this->hitPts) && this->hitPts < this->maxHitPts) {
+	if ((int)amount > (this->maxHitPts - this->hitPts) && this->hitPts < this->maxHitPts) {
 		std::cout << "SC4V-TP " << this->name << " is fully healed (+" << amount << "), with " << this->maxHitPts - amount << " to spare" << std::endl;
 		this->hitPts = this->maxHitPts;
 	}

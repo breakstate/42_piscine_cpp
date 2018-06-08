@@ -62,13 +62,13 @@ void	ClapTrap::meleeAttack(std::string const & target) {
 	std::cout << this->type << this->name << " melee attacks " << target << ", causing " << this->meleeAttackDamage << " points of damage!" << std::endl;
 }
 void	ClapTrap::takeDamage(unsigned int amount) {
-	if (amount > this->armourDamageReduction)
+	if ((int)amount > this->armourDamageReduction)
 		amount = amount - this->armourDamageReduction;
 	else
 		amount = 0;
-	if (amount > this->hitPts)
+	if ((int)amount > this->hitPts)
 	{
-		std::cout << this->type << " " << this->name << " hit for (-" << amount << "). I think it's dead..." << std::endl;
+		std::cout << this->type << " " << this->name << " hit for (-" << amount << ")." << std::endl;
 		this->hitPts = 0;
 	}
 	else
@@ -76,9 +76,11 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 		std::cout << this->type << " " << this->name << " takes " << amount << " points of damage" << std::endl;
 		this->hitPts = this->hitPts - amount;
 	}
+	if (this->hitPts == 0)
+		std::cout << "I think it's dead..." << std::endl;
 }
 void	ClapTrap::beRepaired(unsigned int amount) {
-	if (amount > (this->maxHitPts - this->hitPts) && this->hitPts < this->maxHitPts) {
+	if ((int)amount > (this->maxHitPts - this->hitPts) && this->hitPts < this->maxHitPts) {
 		std::cout << this->type << " " << this->name << " is fully healed (+" << amount << "), with " << this->maxHitPts - amount << " to spare" << std::endl;
 		this->hitPts = this->maxHitPts;
 	}
@@ -97,24 +99,3 @@ void	ClapTrap::getValues( void ) {
 	std::cout << "Energy points: " << this->energyPts << std::endl;
 	std::cout << std::endl;	
 }
-/*
-void	ClapTrap::vaulthunter_dot_exe( std::string const & target ) {
-	if (this->energyPts > 0) {
-		int	index;
-		index = 0;
-		std::string attacks[5];
-		attacks[0] = "left slap!";
-		attacks[1] = "right slap!";
-		attacks[2] = "left kick!";
-		attacks[3] = "right kick!";
-		attacks[4] = "head butt";
-		index = rand() % 5;
-
-		this->energyPts = this->energyPts - 25;
-		std::cout << "CL4P-TP " << this->name << " atacks " << target << " with " << attacks[index] << std::endl;
-	}
-	else {
-		std::cout << "CL4P-TP " << this->name << " doesn't have enough energy to attack!" << std::endl;
-	}
-}
-*/

@@ -54,19 +54,47 @@ NinjaTrap & NinjaTrap::operator=( NinjaTrap const & rhs ) {
 	this->armourDamageReduction = rhs.armourDamageReduction;
 	return (*this);
 }
-//FLAG ERRORS
-void	NinjaTrap::ninjaShoebox( ClapTrap const & srcObj ) {
-	std::cout << this->type << " shoeboxes " << "ClapTrap!";
+
+void	NinjaTrap::ninjaShoebox( ClapTrap & srcObj ) {
+	if (this->energyPts > 0)
+	{
+		this->energyPts -= 25;
+		std::cout << this->type << " shoeboxes " << "ClapTrap!" << std::endl;
+		srcObj.getValues();				
+	}
+	else
+		std::cout << this->type << " doesn't have enough energy to shoebox!" << std::endl;
 }
 
-void	NinjaTrap::ninjaShoebox( FragTrap const & srcObj ) {
-	std::cout << this->type << " shoeboxes " << "FragTrap!";	
+void	NinjaTrap::ninjaShoebox( FragTrap & srcObj ) {
+	if (this->energyPts > 0)
+	{
+		this->energyPts -= 25;
+		std::cout << this->type << " shoeboxes " << "FragTrap!" << std::endl;
+		srcObj.getValues();				
+	}
+	else
+		std::cout << this->type << " doesn't have enough energy to shoebox!" << std::endl;
 }
 
-void	NinjaTrap::ninjaShoebox( ScavTrap const & srcObj ) {
-	std::cout << this->type << " shoeboxes " << "ScavTrap!";	
+void	NinjaTrap::ninjaShoebox( ScavTrap & srcObj ) {
+	if (this->energyPts > 0)
+	{
+		this->energyPts -= 25;
+		std::cout << this->type << " shoeboxes " << "ScavTrap!" << std::endl;
+		srcObj.getValues();		
+	}
+	else
+		std::cout << this->type << " doesn't have enough energy to shoebox!" << std::endl;
 }
 
-void	NinjaTrap::ninjaShoebox( NinjaTrap const & srcObj ) {
-	std::cout << this->type << " shoeboxes " << "NinjaTrap!";	
+void	NinjaTrap::ninjaShoebox( NinjaTrap & srcObj ) {
+	if (this->energyPts > 0)
+	{
+		this->energyPts -= 25;
+		std::cout << this->type << " shoeboxes " << "NinjaTrap!" << std::endl;
+		srcObj.getValues();
+	}
+	else
+		std::cout << this->type << " doesn't have enough energy to shoebox!" << std::endl;
 }

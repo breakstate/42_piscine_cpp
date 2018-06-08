@@ -68,7 +68,7 @@ void	FragTrap::vaulthunter_dot_exe( std::string const & target ) {
 		index = rand() % 5;
 
 		this->energyPts = this->energyPts - 25;
-		std::cout << this->type << " " << this->name << " atacks " << target << " with " << attacks[index] << std::endl;
+		std::cout << this->type << " " << this->name << " attacks " << target << " with " << attacks[index] << std::endl;
 	}
 	else {
 		std::cout << this->type << " " << this->name << " doesn't have enough energy to attack!" << std::endl;
